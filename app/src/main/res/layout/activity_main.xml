@@ -4,11 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container"
     tools:context=".MainActivity">
-    <nl.dionsegijn.konfetti.KonfettiView
-        android:id="@+id/viewKonfetti"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,6 +24,7 @@
                 android:layout_marginStart="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:gravity="center"
+                android:id="@+id/greatings"
                 android:text="A promise for a life time of affection and enjoyment"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_15sdp" />
@@ -33,7 +32,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_below="@+id/greatings"
+                android:layout_marginTop="@dimen/_40sdp"
                 android:orientation="vertical">
 
 
@@ -75,7 +75,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_above="@+id/footer"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:orientation="vertical">
 
@@ -108,6 +108,48 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_15sdp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/footer"
+                android:layout_alignParentBottom="true"
+                android:weightSum="3">
+                <Button
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:id="@+id/welcome_btn"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/white"
+                    android:text="Welcome"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/white"
+                    android:text="Time Line"
+                    android:id="@+id/time_line_btn"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/white"
+                    android:text="Venue"
+                    android:id="@+id/venue_btn"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 
