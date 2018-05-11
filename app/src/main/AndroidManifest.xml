@@ -23,9 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <!-- <meta-data
+        <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAUYGW-EfTxrg5d4yYiEuRV8aRdtKSgriA" />-->
+            android:value="AIzaSyAUYGW-EfTxrg5d4yYiEuRV8aRdtKSgriA" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
