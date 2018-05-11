@@ -11,8 +11,11 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.ndk.CrashlyticsNdk;
 import demo.check.com.MainActivity;
 import demo.check.com.R;
+import io.fabric.sdk.android.Fabric;
 
 public class Splash extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class Splash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics(), new CrashlyticsNdk());
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 

@@ -32,6 +32,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Activity.Time"
             android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="81cdb4a4a79f943e6a31b2b963e9d790a8bf2176" />
     </application>
 
 </manifest>
