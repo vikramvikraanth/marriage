@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="demo.check.com">
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.
+   READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_applogo"
@@ -16,9 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyB4UHvyinaecFraFLW3c9d7SLJdvtfrXqM" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".Activity.WelceomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.MapScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.Time"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
