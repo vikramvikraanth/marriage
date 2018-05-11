@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 
@@ -57,6 +58,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 import demo.check.com.Constants;
+import demo.check.com.FontChangeCrawler;
 import demo.check.com.R;
 import butterknife.ButterKnife;
 import static android.content.Context.LOCATION_SERVICE;
@@ -84,7 +86,8 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, 
         ButterKnife.bind(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-
+        FontChangeCrawler fontChangeCrawler = new FontChangeCrawler(this.getAssets(), getString(R.string.app_font));
+        fontChangeCrawler.replaceFonts((ViewGroup) this.findViewById(android.R.id.content));
         mapFragment.getMapAsync(this);
 
         mapCarIcon = BitmapDescriptorFactory.fromResource(R.mipmap.compass);

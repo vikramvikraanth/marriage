@@ -2,10 +2,12 @@ package demo.check.com.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import demo.check.com.FontChangeCrawler;
 import demo.check.com.R;
 import technolifestyle.com.imageslider.FlipperLayout;
 import technolifestyle.com.imageslider.FlipperView;
@@ -21,7 +23,8 @@ public class Time extends AppCompatActivity {
         setContentView(R.layout.activity_time);
         ButterKnife.bind(this);
         setLayout();
-
+        FontChangeCrawler fontChangeCrawler = new FontChangeCrawler(this.getAssets(), getString(R.string.app_font));
+        fontChangeCrawler.replaceFonts((ViewGroup) this.findViewById(android.R.id.content));
     }
 
     private void setLayout() {

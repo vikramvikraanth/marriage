@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -40,14 +41,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-         main = Typeface.createFromAsset(getAssets(),"Twisted_Circles_Regular.ttf");
-        others = Typeface.createFromAsset(getAssets(),"creamy_butter.ttf");
-        greatings.setTypeface(others);
-        with.setTypeface(others);
-        heroine.setTypeface(main);
-        heroName.setTypeface(main);
-        footerText.setTypeface(others);
-        bottomText.setTypeface(others);
+        FontChangeCrawler fontChangeCrawler = new FontChangeCrawler(this.getAssets(), getString(R.string.app_font));
+        fontChangeCrawler.replaceFonts((ViewGroup) this.findViewById(android.R.id.content));
 
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
