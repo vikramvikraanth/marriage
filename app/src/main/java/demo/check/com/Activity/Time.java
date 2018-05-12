@@ -63,20 +63,7 @@ public class Time extends AppCompatActivity {
         postdelay();
     }
     public void postdelay(){
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //Do something after 100ms
-                if (mIsAdapter1) {
-                    setStyle2();
-                    mCardView.bringCardToFront(mAdapter1.getCount() - 1);
-                } else {
-                    setStyle1();
-                    mCardView.bringCardToFront(mAdapter2.getCount() - 1);
-                }
-            }
-        }, 1500);
+
     }
     private void setStyle1() {
         mCardView.setClickable(true);

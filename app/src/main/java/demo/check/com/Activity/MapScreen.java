@@ -61,6 +61,7 @@ import demo.check.com.Constants;
 import demo.check.com.FontChangeCrawler;
 import demo.check.com.R;
 import butterknife.ButterKnife;
+
 import static android.content.Context.LOCATION_SERVICE;
 
 public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, LocationSource,
@@ -78,6 +79,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, 
     LatLng prevLatLng = new LatLng(0, 0);
     float previousBearing = 0;
     public static LatLng destLocation;
+    private Boolean Realnavigation = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -290,19 +292,22 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, 
     public void zoomCameraToPosition(LatLng curPos) {
 
         boolean contains = mMap.getProjection().getVisibleRegion().latLngBounds.contains(curPos);
+        if (Realnavigation) {
+            if (!contains) {
 
-        if (!contains) {
+                float zoomPosition;
+                zoomPosition = Constants.MAP_ZOOM_SIZE;
 
-            float zoomPosition;
-            zoomPosition = Constants.MAP_ZOOM_SIZE;
-
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(curPos)                              // Sets the center of the map to current location
-                    .zoom(zoomPosition)
-                    .tilt(0)                                     // Sets the tilt of the camera to 0 degrees
-                    .build();
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(curPos)                              // Sets the center of the map to current location
+                        .zoom(zoomPosition)
+                        .tilt(0)                                     // Sets the tilt of the camera to 0 degrees
+                        .build();
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            }
         }
+
+
     }
 
     private void animateMarkerTo(final Marker marker, double[] startValues, double[] endValues, final float bearing) {
@@ -458,7 +463,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, 
             System.out.println("INSIDE LOCAION CHANGE" + mCurrentLocation.getLatitude() + mCurrentLocation.getLongitude());
 
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(latLng)                              // Sets the center of the map to current location
+                    .target( new LatLng(13.0474876, 80.0685817))                              // Sets the center of the map to current location
                     .zoom(Constants.MAP_ZOOM_SIZE)
                     .tilt(0)                                     // Sets the tilt of the camera to 0 degrees
                     .build();
@@ -614,6 +619,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, 
     public void onViewClicked() {
         destLocation = new LatLng(13.0474876, 80.0685817);
         if (mCurrentLocation != null) {
+            Realnavigation = true;
             GoogleDirection.withServerKey(Constants.GoogleDirectionApi)
                     .from(new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude()))
                     .to(destLocation)

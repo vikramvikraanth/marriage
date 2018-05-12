@@ -4,16 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
+    android:background="@color/background"
     tools:context=".MainActivity">
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
+        android:visibility="gone"
         android:id="@+id/lattio_animaton"
         app:lottie_fileName="beating_heart.json"
         app:lottie_loop="true" />
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:snowflakesNum="250"
+        app:snowflakeAlphaMin="150"
+        app:snowflakeAlphaMax="255"
+        app:snowflakeAngleMax="5"
+        app:snowflakeSizeMin="8dp"
+        app:snowflakeSizeMax="32dp"
+        app:snowflakeSpeedMin="4"
+        app:snowflakeSpeedMax="12"
+        app:snowflakesFadingEnabled="true"
+        app:snowflakesAlreadyFalling="false"
+        app:snowflakeImage="@drawable/snowflake"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,6 +37,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -35,7 +52,7 @@
                 android:id="@+id/greatings"
                 android:text="A promise for a life time of affection and enjoyment"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_14sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,6 +69,7 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:gravity="center"
                     android:id="@+id/hero_name"
+                    android:textStyle="bold"
                     android:fontFamily="@string/Twisted_Circles_Regular"
                     android:text="Arunachalakumar"
                     android:textColor="@color/colorPrimary"
@@ -68,7 +86,7 @@
                     android:fontFamily="@string/creamy_butter"
                     android:text="with"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_14sdp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -79,6 +97,7 @@
                     android:gravity="center"
                     android:id="@+id/heroine"
                     android:text="Sowmiya"
+                    android:textStyle="bold"
                     android:fontFamily="@string/Twisted_Circles_Regular"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_18sdp" />
@@ -103,7 +122,7 @@
                     android:fontFamily="@string/creamy_butter"
                     android:text="invite you to be with us, as we  exchange marriage vows"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_14sdp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -124,7 +143,7 @@
                     android:fontFamily="@string/creamy_butter"
                     android:text="No sorry,No Excuses, Even it raises or shines you are not just invited, you are most expected!!!"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,7 +163,13 @@
                     app:menu="@menu/navigation"/>
 
             </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_above="@+id/footer"
+                android:id="@+id/container"
+                android:layout_height="match_parent">
 
+            </FrameLayout>
         </RelativeLayout>
     </ScrollView>
 

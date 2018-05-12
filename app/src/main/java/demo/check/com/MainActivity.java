@@ -5,7 +5,10 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,6 +18,7 @@ import butterknife.ButterKnife;
 import demo.check.com.Activity.MapScreen;
 import demo.check.com.Activity.Time;
 import demo.check.com.Activity.WelceomeActivity;
+import demo.check.com.Fragments.WelcomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottom_text)
     TextView bottomText;
     Typeface main,others;
+    Fragment fragment = new WelcomeFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +56,12 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navi_welcome:
-                        Startactivity(WelceomeActivity.class);
+                        //Startactivity(WelceomeActivity.class);
+                        RemoveFragment(fragment);
                         break;
                     case R.id.navi_timeline:
-                        Startactivity(Time.class);
+                         fragment = new WelcomeFragment();
+                        moveToFragment(fragment);
                         break;
 
                     case R.id.navi_venue:
@@ -70,5 +78,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), object));
     }
 
+    private void moveToFragment(Fragment fragment) {
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commitAllowingStateLoss();
+
+    }
+    public void RemoveFragment(Fragment fragment) {
+        if (!isFinishing()) {
+            if (fragment != null) {
+                getSupportFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
+            }
+        }
+
+    }
 }

@@ -29,6 +29,11 @@ android {
         }
     }
 }
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
 repositories {
 
     maven { url 'https://jitpack.io' }
@@ -70,6 +75,12 @@ dependencies {
         transitive = true;
     }
     implementation 'com.bakerj:infinite-cards:1.0.3'
+    implementation 'com.github.jetradarmobile:android-snowfall:1.2.0'
+
+    implementation 'com.squareup.picasso:picasso:2.3.2'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+
 
 }
 
